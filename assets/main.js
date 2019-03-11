@@ -1,7 +1,6 @@
 $(function() {
     var client = ZAFClient.init();
     client.invoke('resize', {width: '100%', height: '120px'});
-    showInfo();
 });
 
 function showInfo() {
@@ -15,5 +14,16 @@ function showInfo() {
     var source = $("#requester-template").html();
     var template = Handlebars.compile(source);
     var html = template(requester_data);
+    $("#content").html(html);
+}
+
+function showError() {
+    var error_data = {
+      'status': 404,
+      'statusText': 'Not found'
+    };
+    var source = $("#error-template").html();
+    var template = Handlebars.compile(source);
+    var html = template(error_data);
     $("#content").html(html);
 }
